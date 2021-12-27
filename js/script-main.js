@@ -1,4 +1,4 @@
-// computer play function for random number from 1 to 3 with if condition to turn to strings
+// computer play function for random number from 1 to 3 with if condition to return to string names
 
 function computerPlay() {
   let number = Math.floor(Math.random() * 3) + 1;
@@ -25,13 +25,13 @@ function getPlayRound(playerSelection, computerSelection) {
   if (playerSelection === computerSelection) {
     return "Draw";
   } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-    return "You won";
+    return `You Won! ${playerSelection} beats ${computerSelection}`;
   } else if (playerSelection === "Scissor" && computerSelection === "Paper") {
-    return "You won";
+    return `You Won! ${playerSelection} beats ${computerSelection}`;
   } else if (playerSelection === "Rock" && computerSelection === "Scissor") {
-    return "You won";
+    return `You Won! ${playerSelection} beats ${computerSelection}`;
   } else {
-    return "You lost";
+    return `You Lose! ${computerSelection} beats ${playerSelection}`;
   }
 }
 console.log(getPlayRound(playerSelection, computerSelection));
