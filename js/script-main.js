@@ -1,3 +1,15 @@
+const playerSelection = userPlay();
+console.log(playerSelection);
+const computerSelection = computerPlay();
+console.log(computerSelection);
+
+//Function that turns the promt imput to lowercase and first letter to uppercase!
+
+function userPlay() {
+  input = prompt("Rock Paper Scissor");
+  return input.charAt(0).toUpperCase() + input.substring(1).toLowerCase();
+}
+
 // computer play function for random number from 1 to 3 with if condition to return to string names
 
 function computerPlay() {
@@ -10,14 +22,6 @@ function computerPlay() {
     return "Scissor";
   }
 }
-
-let playerSelection = prompt("Rock Paper Scissor");
-playerSelection =
-  playerSelection.charAt(0).toUpperCase() +
-  playerSelection.substring(1).toLowerCase();
-console.log(playerSelection);
-let computerSelection = computerPlay();
-console.log(computerSelection);
 
 // function that calulates the result of one round
 
