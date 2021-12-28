@@ -11,6 +11,12 @@ if (playerSelection === "") {
   alert("Dude that's empty, type something!   :( ");
 } else if (playerSelection === null) {
   alert("Thank you for not playing    -__-");
+} else if (
+  playerSelection !== "rock" &&
+  playerSelection !== "paper" &&
+  playerSelection !== "scissor"
+) {
+  alert("What the hell did you typed?");
 }
 console.log(playerSelection);
 
@@ -45,7 +51,7 @@ function playAround(user, computer) {
   } else if (user === "paper" && computer === "scissor") {
     return `You lost ${computer} beats ${user}`;
   } else {
-    return `${user} is an Wrong choice!`;
+    return `Abort`;
   }
 }
 console.log(playAround(playerSelection, computerSelection));
