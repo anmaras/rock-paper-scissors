@@ -4,8 +4,8 @@ let draw = 0;
 
 game();
 function game() {
-  for (let i = 1; i <= 5; i++) {
-    let playerSelection = prompt("Rock Paper Scissor");
+  for (let i = 0; i <= 4; i++) {
+    let playerSelection = prompt("Rock Paper Scissor", "Rock/Paper/Scissor");
     let computerSelection = computerPlay();
     // if condition for avoiding type error with null when using case incensitive prompt!
     if (playerSelection != null) {
@@ -38,39 +38,43 @@ function game() {
         return "scissor";
       }
     }
-
     // // function that calulates the result of one round
 
     function playAround(user, computer) {
       if (user === computer) {
         draw += 1;
-        return alert("It's a draw");
+        return alert(`It's a draw ${user} match ${computer}`);
       } else if (user === "rock" && computer === "scissor") {
         playerScore += 1;
-        return alert("You Won!" + `${user} wins ${computer}`);
+        return alert("You Won! " + `${user} beats ${computer}`);
       } else if (user === "paper" && computer === "rock") {
         playerScore += 1;
-        return alert("You Won!" + `${user} wins ${computer}`);
+        return alert("You Won! " + `${user} beats ${computer}`);
       } else if (user === "scissor" && computer === "paper") {
         playerScore += 1;
-        return alert("You Won!" + `${user} wins ${computer}`);
+        return alert("You Won! " + `${user} beats ${computer}`);
       } else if (user === "scissor" && computer === "rock") {
         computerScore += 1;
-        return alert(`You lost ${computer} beats ${user}`);
+        return alert(`You Lost ${computer} beats ${user}`);
       } else if (user === "rock" && computer === "paper") {
         computerScore += 1;
-        return alert(`You lost ${computer} beats ${user}`);
+        return alert(`You Lost ${computer} beats ${user}`);
       } else if (user === "paper" && computer === "scissor") {
         computerScore += 1;
-        return alert(`You lost ${computer} beats ${user}`);
+        return alert(`You Lost ${computer} beats ${user}`);
       } else {
-        return alert(`Abort`);
+        return "Abort";
       }
     }
     playAround(playerSelection, computerSelection);
-
-    console.log("Player " + playerScore);
-    console.log("Computer " + computerScore);
-    console.log("Draw " + draw);
+    console.log("Player " + playerScore, "Computer " + computerScore);
   }
 }
+function calcScoreResult() {
+  if (playerScore > computerScore) {
+    return alert("Congratulations You Won The Game!");
+  } else if (computerScore > playerScore) {
+    return alert("You Suck! Game Lost!");
+  }
+}
+calcScoreResult();
