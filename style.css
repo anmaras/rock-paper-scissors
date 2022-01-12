@@ -5,3 +5,35 @@
   margin: 0;
   padding: 0;
 }
+
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+#game-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  min-width: 100vh;
+  background-color: #000000e7;
+}
+.game_logo {
+  background-color: #000000;
+  color: #fca311;
+  /* padding: 100px; */
+  font-size: 50px;
+  font-weight: bold;
+  padding: 40px 40px;
+  border-radius: 50px;
+  border: 4px solid #fca311;
+  box-shadow: 0px 0px 20px #523f21;
+}
+
+#game-title button {
+  border-radius: 10px;
+  border: 5px solid black;
+  font-size: 45px;
+  background-color: #d83f87;
+}
