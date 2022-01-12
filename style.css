@@ -10,19 +10,16 @@ body {
   font-family: "Ubuntu", sans-serif;
   background-color: #242527;
   height: 100vh;
-
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
 }
 
-#game-title {
+/* #game-title {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-}
+} */
 
 /* .game_logo {
   display: flex;
@@ -58,22 +55,26 @@ body {
   border: 3px solid #474a4f;
   box-shadow: 10px 10px 2px #1a1816;
   transition: 0.2s;
+  display: none;
 }
 
-.play-button button:active {
+/* .play-button button:active {
   background-color: #3472c2;
   transform: scale(0.9, 0.9);
-}
+} */
 
 #ingame-btns {
   display: flex;
-  width: 1500px;
-  justify-content: space-between;
+  justify-content: space-around;
+  align-items: center;
+  flex: 1;
+  gap: 50px;
 }
 
 #ingame-btns div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 20px;
 }
 
@@ -88,7 +89,7 @@ body {
   background-color: #84c234;
   border: 3px solid #474a4f;
   box-shadow: 10px 10px 2px #1a1816;
-  transition: 0.2s;
+  /* transition: 0.2s; */
 }
 
 .player_btns button:active {
@@ -96,7 +97,35 @@ body {
   transform: scale(0.9, 0.9);
 }
 
-.computer_btns button:active {
-  background-color: #3472c2;
-  transform: scale(0.9, 0.9);
+.player_name_box {
+  border: 2px solid black;
+  width: 250px;
+  padding: 10px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #eefceb;
+  border-radius: 25px;
+  background-color: #84c234;
+  border: 3px solid #474a4f;
+  box-shadow: 10px 10px 2px #1a1816;
+}
+
+.computer_name_box {
+  border: 2px solid black;
+  width: 250px;
+  padding: 10px;
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: #eefceb;
+  border-radius: 25px;
+  background-color: #84c234;
+  border: 3px solid #474a4f;
+  box-shadow: 10px 10px 2px #1a1816;
+}
+
+h2 {
+  color: #eefceb;
+  font-size: 100px;
 }
