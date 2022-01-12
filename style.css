@@ -8,38 +8,35 @@
 
 body {
   font-family: "Ubuntu", sans-serif;
-  background-color: #161616;
+  background-color: #242527;
   height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#game-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-@keyframes glow {
-  from {
-    box-shadow: 0px 0px 15px #fca211, 0px 0px 15px inset #fca21173;
-  }
-  to {
-    box-shadow: 0px 0px 15px #fca21173, 0px 0px 15px inset #fca2117a;
-  }
-}
-
-.game_logo {
+/* .game_logo {
   display: flex;
+  justify-content: space-around;
   align-items: center;
-  padding: 50px;
-  background-color: #161616;
-  color: #ffd43b;
+  width: 1000px;
+  height: 250px;
+  background-color: #84c234;
+  color: #eefceb;
   font-size: 50px;
   font-weight: bold;
   border-radius: 50px;
-  border: 4px solid #ffd43b;
-
-  animation-name: glow;
-  animation-duration: 1s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
+  border: 4px solid #474a4f;
+  box-shadow: 10px 10px 2px #1a1816;
 }
 
 .game_logo span {
@@ -48,20 +45,58 @@ body {
 
 .game_logo img {
   width: 58px;
+} */
+
+.play-button button {
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 100px;
+  font-weight: bold;
+  color: #eefceb;
+  border-radius: 25px;
+  background-color: #84c234;
+  border: 3px solid #474a4f;
+  box-shadow: 10px 10px 2px #1a1816;
+  transition: 0.2s;
 }
 
-/* .play-button button {
-  border: 0px;
-  font-size: 45px;
-  font-weight: 700;
-  color: #ffd43b;
-  background-color: #161616;
+.play-button button:active {
+  background-color: #3472c2;
+  transform: scale(0.9, 0.9);
 }
+
 #ingame-btns {
   display: flex;
+  width: 1500px;
+  justify-content: space-between;
+}
 
+#ingame-btns div {
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  justify-content: center;
-  align-items: center;
-  background-color: #161616;
-} */
+}
+
+.player_btns button,
+.computer_btns button {
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 100px;
+  font-weight: bold;
+  color: #eefceb;
+  border-radius: 25px;
+  background-color: #84c234;
+  border: 3px solid #474a4f;
+  box-shadow: 10px 10px 2px #1a1816;
+  transition: 0.2s;
+}
+
+.player_btns button:active {
+  background-color: #3472c2;
+  transform: scale(0.9, 0.9);
+}
+
+.computer_btns button:active {
+  background-color: #3472c2;
+  transform: scale(0.9, 0.9);
+}
