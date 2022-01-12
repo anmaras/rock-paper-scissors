@@ -8,32 +8,60 @@
 
 body {
   font-family: "Ubuntu", sans-serif;
-}
-
-#game-title {
+  background-color: #161616;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  min-width: 100vh;
-  background-color: #000000e7;
-}
-.game_logo {
-  background-color: #000000;
-  color: #fca311;
-  /* padding: 100px; */
-  font-size: 50px;
-  font-weight: bold;
-  padding: 40px 40px;
-  border-radius: 50px;
-  border: 4px solid #fca311;
-  box-shadow: 0px 0px 20px #523f21;
+  justify-content: center;
 }
 
-#game-title button {
-  border-radius: 10px;
-  border: 5px solid black;
-  font-size: 45px;
-  background-color: #d83f87;
+@keyframes glow {
+  from {
+    box-shadow: 0px 0px 15px #fca211, 0px 0px 15px inset #fca21173;
+  }
+  to {
+    box-shadow: 0px 0px 15px #fca21173, 0px 0px 15px inset #fca2117a;
+  }
 }
+
+.game_logo {
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  background-color: #161616;
+  color: #ffd43b;
+  font-size: 50px;
+  font-weight: bold;
+  border-radius: 50px;
+  border: 4px solid #ffd43b;
+
+  animation-name: glow;
+  animation-duration: 1s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+.game_logo span {
+  display: flex;
+}
+
+.game_logo img {
+  width: 58px;
+}
+
+/* .play-button button {
+  border: 0px;
+  font-size: 45px;
+  font-weight: 700;
+  color: #ffd43b;
+  background-color: #161616;
+}
+#ingame-btns {
+  display: flex;
+
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+} */
