@@ -76,12 +76,21 @@ body {
 
 /*Ingame Flex Main Control */
 .player_btns,
-.computer_btns,
-.game_results {
+.computer_btns {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 20px;
+}
+
+/* Game Relults Flex Control */
+.game_results {
+  display: flex;
+  height: 463px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: px;
 }
 
 /* Player and computer buttons style control */
@@ -124,5 +133,13 @@ body {
 .vs_box {
   color: #eefceb;
   font-size: 100px;
-  text-shadow: 10px 10px 2px #1a1816;
+  text-shadow: 3px 3px 2px #1a1816;
+}
+
+/* Round box style control */
+.game_round,
+.result_numbers {
+  color: #eefceb;
+  font-size: 40px;
+  text-shadow: 3px 3px 2px #1a1816;
 }
