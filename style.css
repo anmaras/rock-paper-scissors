@@ -11,11 +11,15 @@ body {
   background-color: #242527;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   height: 100vh;
+  gap: 25px;
 }
 /* toggle to hidden the play button */
+.play-button button {
+  width: 500px;
+}
 .play-button.hidden {
   display: none;
 }
@@ -26,17 +30,34 @@ body {
 }
 .score.visible {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  width: 900px;
 }
+.score div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 250px;
+  gap: 10px;
+}
+
 /* toggle to visible the ingame section */
 .ingame-box {
   display: none;
 }
 .ingame-box.visible {
   display: flex;
-  justify-content: center;
   align-items: center;
+  gap: 25px;
+}
+
+/* toggle visible the quit button */
+.quit_btn {
+  display: none;
+}
+.quit_btn.visible {
+  display: flex;
 }
 
 /*Ingame Options flex Control */
@@ -44,8 +65,9 @@ body {
 .computer_btns {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  width: 400px;
+  gap: 25px;
 }
 
 /* Round box and score style control */
@@ -84,10 +106,15 @@ button {
   background-color: #3472c2;
   transform: scale(0.9, 0.9);
 }
+.quit_btn button:active {
+  background-color: #3472c2;
+  transform: scale(0.9, 0.9);
+}
 
 /* Player and computer options style control */
 .player_name_box,
 .computer_name_box {
+  width: 250px;
   border: 2px solid black;
   font-size: 40px;
   font-weight: bold;
@@ -102,6 +129,8 @@ button {
 
 /* VS style control */
 .vs_box {
+  width: 100px;
+  height: 100px;
   color: #eefceb;
   font-size: 80px;
   text-shadow: 3px 3px 2px #1a1816;
