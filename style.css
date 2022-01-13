@@ -15,22 +15,28 @@ body {
   align-items: center;
   height: 100vh;
 }
-
-#play {
-  display: flex;
+/* toggle to hidden the play button */
+.play-button.hidden {
+  display: none;
 }
 
-#ingame {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* toggle to visible the score section */
+.score {
+  display: none;
 }
-
-#score {
+.score.visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+}
+/* toggle to visible the ingame section */
+.ingame-box {
+  display: none;
+}
+.ingame-box.visible {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*Ingame Options flex Control */
@@ -40,10 +46,23 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
 }
 
-/* Player and computer buttons style control */
+/* Round box and score style control */
+.game_round,
+.result_numbers {
+  border: 2px solid black;
+  border-radius: 25px;
+  background-color: #84c234;
+  border: 3px solid #474a4f;
+  color: #eefceb;
+  font-size: 40px;
+  text-shadow: 3px 3px 2px #1a181621;
+  text-align: center;
+  box-shadow: 10px 10px 2px #1a1816;
+}
+
+/* Player and computer (name) style control */
 button {
   border: 2px solid black;
   font-size: 80px;
@@ -66,7 +85,7 @@ button {
   transform: scale(0.9, 0.9);
 }
 
-/* Player box style control */
+/* Player and computer options style control */
 .player_name_box,
 .computer_name_box {
   border: 2px solid black;
@@ -86,18 +105,4 @@ button {
   color: #eefceb;
   font-size: 80px;
   text-shadow: 3px 3px 2px #1a1816;
-}
-
-/* Round box style control */
-.game_round,
-.result_numbers {
-  border: 2px solid black;
-  border-radius: 25px;
-  background-color: #84c234;
-  border: 3px solid #474a4f;
-  color: #eefceb;
-  font-size: 40px;
-  text-shadow: 3px 3px 2px #1a181621;
-  text-align: center;
-  box-shadow: 10px 10px 2px #1a1816;
 }
