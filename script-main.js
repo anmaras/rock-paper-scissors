@@ -4,6 +4,8 @@ const gameStart = document.querySelector(".score");
 const gameMainBox = document.querySelector(".ingame-box");
 const quitButton = document.querySelector(".quit_btn");
 const playerButtons = document.querySelectorAll(".player_btns button");
+let userScore = 0;
+let computerScore = 0;
 
 const startMainGame = () => {
   toggleStart.classList.toggle("hidden");
@@ -23,25 +25,34 @@ const computer = () => {
 
 const playRound = (user, computerChoice) => {
   if (user === "Rock" && computerChoice === "Scissors") {
+    userScore++;
     return console.log("win");
   } else if (user === "Scissors" && computerChoice === "Paper") {
+    userScore++;
     return console.log("win");
   } else if (user === "Paper" && computerChoice === "Rock") {
+    userScore++;
     return console.log("win");
   } else if (user === computerChoice) {
     return console.log("Draw");
-  } else return console.log("Lose");
+  } else computerScore++;
+  console.log("lose");
 };
 
 playerButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    userScore += 0;
+    computerScore += 0;
     const user = button.id;
     console.log(user);
     const computerChoice = computer();
     console.log(computerChoice);
     playRound(user, computerChoice);
+    console.log(userScore);
+    console.log(computerScore);
   });
 });
 
+console.log(userScore);
 startPlayBtn.addEventListener("click", startMainGame);
 quitButton.addEventListener("click", startMainGame);
