@@ -15,7 +15,7 @@ const startMainGame = () => {
 };
 
 const computer = () => {
-  let number = Math.floor(Math.random() * 3) + 1;
+  let number = Math.floor(Math.random() * 3 + 1);
   if (number === 1) {
     return (number = "Rock");
   } else if (number === 2) {
@@ -26,7 +26,7 @@ const computer = () => {
 const playRound = (user, computerChoice) => {
   if (user === "Rock" && computerChoice === "Scissors") {
     userScore++;
-    return console.log("win");
+    return console.log("Win");
   } else if (user === "Scissors" && computerChoice === "Paper") {
     userScore++;
     return console.log("win");
@@ -36,7 +36,7 @@ const playRound = (user, computerChoice) => {
   } else if (user === computerChoice) {
     return console.log("Draw");
   } else computerScore++;
-  console.log("lose");
+  console.log("Lose");
 };
 
 playerButtons.forEach((button) => {
@@ -53,6 +53,5 @@ playerButtons.forEach((button) => {
   });
 });
 
-console.log(userScore);
 startPlayBtn.addEventListener("click", startMainGame);
 quitButton.addEventListener("click", startMainGame);
