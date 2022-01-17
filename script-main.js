@@ -4,9 +4,9 @@ const gameStart = document.querySelector(".score");
 const gameMainBox = document.querySelector(".ingame-box");
 const quitButton = document.querySelector(".quit_btn");
 const playerButtons = document.querySelectorAll(".player_btns button");
+const roundNumber = document.querySelector(".game_round span");
 let userScore = 0;
 let computerScore = 0;
-let gameRound = 0;
 let roundResult = "";
 
 const startMainGame = () => {
@@ -16,7 +16,7 @@ const startMainGame = () => {
   quitButton.classList.toggle("visible");
 };
 
-const computer = () => {
+const calcComputerChoice = () => {
   let number = Math.floor(Math.random() * 3 + 1);
   if (number === 1) {
     return (number = "Rock");
@@ -25,7 +25,7 @@ const computer = () => {
   } else return (number = "Paper");
 };
 
-const playRound = (user, computerChoice) => {
+const calcGameRound = (user, computerChoice) => {
   if (user === "Rock" && computerChoice === "Scissors") {
     userScore++;
     return (roundResult = `Win`);
@@ -43,14 +43,13 @@ const playRound = (user, computerChoice) => {
 
 playerButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    gameRound += 1;
+    const user = button.id;
+    const computerChoice = calcComputerChoice();
+    roundNumber.textContent++;
     userScore += 0;
     computerScore += 0;
-    const user = button.id;
-    const computerChoice = computer();
-    playRound(user, computerChoice);
+    calcGameRound(user, computerChoice);
     console.log(roundResult);
-    console.log(`Round ${gameRound}`);
     console.log(`Player ${user}`);
     console.log(`Computer ${computerChoice}`);
     console.log(`Score ${userScore} - ${computerScore}`);
