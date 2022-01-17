@@ -49,8 +49,20 @@ const getRoundNumber = () => {
   return roundNumberDisplay.textContent++;
 };
 
+const calcUserScore = () => {
+  return (playerWinDisplay.textContent = userScore);
+};
+
+const calcComputerScore = () => {
+  computerWinDisplay.textContent = computerScore;
+};
+
+const setTimeOut = () => {
+  setTimeout;
+};
+
 //who won the game function
-const checkRoundConditions = () => {
+const checkGameConditions = () => {
   if (userScore >= 5) {
     return alert("You win");
   } else if (computerScore >= 5) {
@@ -63,18 +75,25 @@ playerButtons.forEach((button) => {
     const user = button.id;
     computerChoice = calcComputerChoice();
     calcGameRound(user, computerChoice);
-    playerWinDisplay.textContent = userScore;
-    computerWinDisplay.textContent = computerScore;
-    console.log(roundResult);
-    // console.log(`Player ${user}`);
-    console.log(`Computer ${computerChoice}`);
-    // console.log(`Score ${userScore} - ${computerScore}`);
+    console.log(computerChoice);
   });
 });
 
-// playerButtons.forEach((button) => {
-//   button.addEventListener("click", checkRoundConditions);
-// });
+playerButtons.forEach((button) => {
+  button.addEventListener("click", calcUserScore);
+});
+
+playerButtons.forEach((button) => {
+  button.addEventListener("click", calcComputerScore);
+});
+
+playerButtons.forEach((button) => {
+  button.addEventListener("click", getRoundNumber);
+});
+
+playerButtons.forEach((button) => {
+  button.addEventListener("click", checkGameConditions);
+});
 
 startPlayBtn.addEventListener("click", startMainGame);
 quitButton.addEventListener("click", startMainGame);
