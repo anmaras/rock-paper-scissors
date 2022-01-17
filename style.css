@@ -59,6 +59,12 @@ body {
 .quit_btn.visible {
   display: flex;
 }
+.reset_btn {
+  display: none;
+}
+.reset_btn.visible {
+  display: flex;
+}
 
 /*Ingame Options flex Control */
 .player_btns,
@@ -107,6 +113,10 @@ button {
   transform: scale(0.9, 0.9);
 }
 .quit_btn button:active {
+  background-color: #3472c2;
+  transform: scale(0.9, 0.9);
+}
+.reset_btn button:active {
   background-color: #3472c2;
   transform: scale(0.9, 0.9);
 }

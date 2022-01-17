@@ -7,6 +7,7 @@ const playerButtons = document.querySelectorAll(".player_btns button");
 const roundNumberDisplay = document.querySelector(".game_round span");
 const playerWinDisplay = document.querySelector(".player_win");
 const computerWinDisplay = document.querySelector(".computer_win");
+const resetBtn = document.querySelector(".reset_btn");
 let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
@@ -16,7 +17,10 @@ const startMainGame = () => {
   gameStart.classList.toggle("visible");
   gameMainBox.classList.toggle("visible");
   quitButton.classList.toggle("visible");
+  resetBtn.classList.toggle("visible");
 };
+
+const resetGame = () => {};
 
 //computer choice result
 const calcComputerChoice = () => {
@@ -71,11 +75,11 @@ const checkGameConditions = () => {
 };
 
 playerButtons.forEach((button) => {
+  // return the round result
   button.addEventListener("click", () => {
     const user = button.id;
     computerChoice = calcComputerChoice();
     calcGameRound(user, computerChoice);
-    console.log(computerChoice);
   });
 });
 
