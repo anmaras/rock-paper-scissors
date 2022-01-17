@@ -5,6 +5,8 @@ const gameMainBox = document.querySelector(".ingame-box");
 const quitButton = document.querySelector(".quit_btn");
 const playerButtons = document.querySelectorAll(".player_btns button");
 const roundNumber = document.querySelector(".game_round span");
+const playerWinDisplay = document.querySelector(".player_win");
+const computerWinDisplay = document.querySelector(".computer_win");
 let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
@@ -43,12 +45,12 @@ const calcGameRound = (user, computerChoice) => {
 
 playerButtons.forEach((button) => {
   button.addEventListener("click", () => {
+    roundNumber.textContent++;
     const user = button.id;
     const computerChoice = calcComputerChoice();
-    roundNumber.textContent++;
-    userScore += 0;
-    computerScore += 0;
     calcGameRound(user, computerChoice);
+    playerWinDisplay.textContent = userScore;
+    computerWinDisplay.textContent = computerScore;
     console.log(roundResult);
     console.log(`Player ${user}`);
     console.log(`Computer ${computerChoice}`);
