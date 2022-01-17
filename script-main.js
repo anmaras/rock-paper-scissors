@@ -20,8 +20,6 @@ const startMainGame = () => {
   resetBtn.classList.toggle("visible");
 };
 
-const resetGame = () => {};
-
 //computer choice result
 const calcComputerChoice = () => {
   let number = Math.floor(Math.random() * 3 + 1);
@@ -35,13 +33,13 @@ const calcComputerChoice = () => {
 //Game round result
 const calcGameRound = (user, computerChoice) => {
   if (user === "Rock" && computerChoice === "Scissors") {
-    userScore++;
+    userScore += 1;
     return (roundResult = `Win`);
   } else if (user === "Scissors" && computerChoice === "Paper") {
-    userScore++;
+    userScore += 1;
     return (roundResult = `Win`);
   } else if (user === "Paper" && computerChoice === "Rock") {
-    userScore++;
+    userScore += 1;
     return (roundResult = `Win`);
   } else if (user === computerChoice) {
     return (roundResult = `Draw`);
@@ -50,20 +48,20 @@ const calcGameRound = (user, computerChoice) => {
 };
 
 const getRoundNumber = () => {
-  return roundNumberDisplay.textContent++;
+  roundNumberDisplay.textContent++;
 };
 
 const calcUserScore = () => {
-  return (playerWinDisplay.textContent = userScore);
+  playerWinDisplay.textContent = userScore;
 };
 
 const calcComputerScore = () => {
   computerWinDisplay.textContent = computerScore;
 };
 
-const setTimeOut = () => {
-  setTimeout;
-};
+// const setTimeOut = () => {
+//   setTimeout;
+// };
 
 //who won the game function
 const checkGameConditions = () => {
@@ -74,12 +72,25 @@ const checkGameConditions = () => {
   }
 };
 
+const resetGame = () => {
+  //reset function to return to
+  userScore = 0;
+  computerScore = 0;
+  roundNumberDisplay.textContent = 1;
+  playerWinDisplay.textContent = userScore;
+  computerWinDisplay.textContent = computerScore;
+};
+
+//eventListeners
+
 playerButtons.forEach((button) => {
-  // return the round result
   button.addEventListener("click", () => {
     const user = button.id;
     computerChoice = calcComputerChoice();
     calcGameRound(user, computerChoice);
+    console.log(`Player ${user}`);
+    console.log(`Computer ${computerChoice}`);
+    console.log(roundResult);
   });
 });
 
@@ -95,9 +106,13 @@ playerButtons.forEach((button) => {
   button.addEventListener("click", getRoundNumber);
 });
 
-playerButtons.forEach((button) => {
-  button.addEventListener("click", checkGameConditions);
-});
+// playerButtons.forEach((button) => {
+//   button.addEventListener("click", checkGameConditions);
+// });
 
 startPlayBtn.addEventListener("click", startMainGame);
-quitButton.addEventListener("click", startMainGame);
+quitButton.addEventListener("click", () => {
+  startMainGame();
+  resetGame();
+});
+resetBtn.addEventListener("click", resetGame);
