@@ -12,6 +12,7 @@ let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
 
+// game start function
 const startMainGame = () => {
   toggleStart.classList.toggle("hidden");
   gameStart.classList.toggle("visible");
@@ -47,21 +48,12 @@ const calcGameRound = (user, computerChoice) => {
   computerScore++;
 };
 
-const getRoundNumber = () => {
-  roundNumberDisplay.textContent++;
-};
+const getRoundNumber = () => roundNumberDisplay.textContent++;
 
-const calcUserScore = () => {
-  playerWinDisplay.textContent = userScore;
-};
+const calcUserScore = () => (playerWinDisplay.textContent = userScore);
 
-const calcComputerScore = () => {
-  computerWinDisplay.textContent = computerScore;
-};
-
-// const setTimeOut = () => {
-//   setTimeout;
-// };
+const calcComputerScore = () =>
+  (computerWinDisplay.textContent = computerScore);
 
 //who won the game function
 const checkGameConditions = () => {
@@ -72,8 +64,8 @@ const checkGameConditions = () => {
   }
 };
 
+//game reset function
 const resetGame = () => {
-  //reset function to return to
   userScore = 0;
   computerScore = 0;
   roundNumberDisplay.textContent = 1;
@@ -82,7 +74,6 @@ const resetGame = () => {
 };
 
 //eventListeners
-
 playerButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const user = button.id;
@@ -105,10 +96,6 @@ playerButtons.forEach((button) => {
 playerButtons.forEach((button) => {
   button.addEventListener("click", getRoundNumber);
 });
-
-// playerButtons.forEach((button) => {
-//   button.addEventListener("click", checkGameConditions);
-// });
 
 startPlayBtn.addEventListener("click", startMainGame);
 quitButton.addEventListener("click", () => {

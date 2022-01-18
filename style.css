@@ -52,7 +52,7 @@ body {
   gap: 25px;
 }
 
-/* toggle visible the quit button */
+/* toggle visible the quit & reset button */
 .quit_btn {
   display: none;
 }
