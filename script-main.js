@@ -17,6 +17,11 @@ let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
 
+//function that change the button bg color when clicked
+const getButtonColor = () => {
+  event.target.style.backgroundColor = "red";
+};
+
 // game start function turn visibility on
 const startMainGame = () => {
   toggleStart.classList.toggle("hidden");
@@ -63,6 +68,7 @@ const calcGameRound = (user, computerChoice) => {
   computerScore++;
 };
 
+// Functions that calculate round and score
 const getRoundNumber = () => {
   roundNumberDisplay.textContent++;
   if (userScore >= 5 || computerScore >= 5) {
@@ -129,6 +135,14 @@ playerButtons.forEach((button) => {
 playerButtons.forEach((button) => {
   button.addEventListener("click", calcComputerScore);
 });
+
+playerButtons.forEach((button) => {
+  button.addEventListener("click", getButtonColor);
+});
+
+// playerButtons.forEach((button) => {
+//   button.removeEventListener("click", getButtonColor);
+// });
 
 startPlayBtn.addEventListener("click", startMainGame);
 

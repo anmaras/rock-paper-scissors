@@ -118,7 +118,7 @@ button {
   border: 3px solid #474a4f;
   box-shadow: 10px 10px 2px #1a1816;
   text-shadow: 3px 3px 2px #1a181621;
-  /* transition: 0.2s; */
+  transition: 0.2s;
 }
 
 .player_btns button:active {
