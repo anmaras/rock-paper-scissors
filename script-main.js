@@ -42,9 +42,11 @@ const replaceInfoBoarDiv = () => {
   infoBoardButton.replaceChild(infoDiv, infoNewDiv);
 };
 
-// Delet the info div
+// Delete the info div
 const deleteInfoBoardDiv = () => {
-  infoBoardButton.removeChild(infoBoardButton.firstChild);
+  if (infoDiv !== "") {
+    infoBoardButton.removeChild(infoBoardButton.firstChild);
+  }
 };
 
 //computer choice result
@@ -61,16 +63,16 @@ const calcComputerChoice = () => {
 const calcGameRound = (user, computerChoice) => {
   if (user === "Rock" && computerChoice === "Scissors") {
     userScore += 1;
-    return (roundResult = `${user} beats ${computerChoice} You won`);
+    return (roundResult = `${user} beats ${computerChoice} You won the round!`);
   } else if (user === "Scissors" && computerChoice === "Paper") {
     userScore += 1;
-    return (roundResult = `${user} beats ${computerChoice}!`);
+    return (roundResult = `${user} beats ${computerChoice} You won the round!`);
   } else if (user === "Paper" && computerChoice === "Rock") {
     userScore += 1;
-    return (roundResult = `${user} beats ${computerChoice}!`);
+    return (roundResult = `${user} beats ${computerChoice} You won the round!`);
   } else if (user === computerChoice) {
     return (roundResult = `Draw!`);
-  } else roundResult = `${computerChoice} beats ${user}!`;
+  } else roundResult = `${computerChoice} beats ${user} You lost the round!`;
   computerScore++;
 };
 
@@ -105,9 +107,9 @@ playerButtons.forEach((button) => {
     const user = button.id;
     computerChoice = calcComputerChoice();
     calcGameRound(user, computerChoice);
-    console.log(`Player ${user}`);
-    console.log(`Computer ${computerChoice}`);
-    console.log(roundResult);
+    // console.log(`Player ${user}`);
+    // console.log(`Computer ${computerChoice}`);
+    // console.log(roundResult);
   });
 });
 
@@ -119,15 +121,9 @@ playerButtons.forEach((button) => {
   button.addEventListener("click", () => {
     addInfoBoardDiv();
     replaceInfoBoarDiv();
+    calcComputerScore();
+    getRoundNumber();
   });
-});
-
-playerButtons.forEach((button) => {
-  button.addEventListener("click", calcComputerScore);
-});
-
-playerButtons.forEach((button) => {
-  button.addEventListener("click", getRoundNumber);
 });
 
 startPlayBtn.addEventListener("click", startMainGame);
@@ -137,5 +133,10 @@ quitButton.addEventListener("click", () => {
   resetGame();
   deleteInfoBoardDiv();
 });
-resetBtn.addEventListener("click", resetGame);
-resetBtn.addEventListener("click", deleteInfoBoardDiv);
+
+resetBtn.addEventListener("click", () => {
+  resetGame();
+  deleteInfoBoardDiv();
+});
+
+// resetBtn.addEventListener("click", deleteInfoBoardDiv);
