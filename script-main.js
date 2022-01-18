@@ -10,7 +10,8 @@ const computerWinDisplay = document.querySelector(".computer_win");
 const resetBtn = document.querySelector(".reset_btn");
 const mainBoardButton = document.querySelector("#main-board button");
 const infoBoardButton = document.querySelector(".info_board");
-
+let infoDiv = "";
+let infoNewDiv = "";
 let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
@@ -25,17 +26,25 @@ const startMainGame = () => {
   infoBoardButton.classList.toggle("visible");
 };
 
-// Info board add new button and result
-const addInfoBoardBtn = () => {
-  const infoDiv = document.createElement("div");
+// Info board add new div element
+const addInfoBoardDiv = () => {
+  infoDiv = document.createElement("div");
   infoDiv.id = "info_div";
   infoDiv.textContent = roundResult; //get result from calcGameRound function
   infoDiv.style.fontSize = "50px";
   infoDiv.style.color = "#eefceb";
   infoBoardButton.appendChild(infoDiv);
-  // replace the info btn so it wont stack
-  const infoNewDiv = document.getElementById("info_div");
+};
+
+const replaceInfoBoarDiv = () => {
+  // replace the info div so it wont stack
+  infoNewDiv = document.getElementById("info_div");
   infoBoardButton.replaceChild(infoDiv, infoNewDiv);
+};
+
+// Delet the info div
+const deleteInfoBoardDiv = () => {
+  infoBoardButton.removeChild(infoBoardButton.firstChild);
 };
 
 //computer choice result
@@ -52,7 +61,7 @@ const calcComputerChoice = () => {
 const calcGameRound = (user, computerChoice) => {
   if (user === "Rock" && computerChoice === "Scissors") {
     userScore += 1;
-    return (roundResult = `${user} beats ${computerChoice}!`);
+    return (roundResult = `${user} beats ${computerChoice} You won`);
   } else if (user === "Scissors" && computerChoice === "Paper") {
     userScore += 1;
     return (roundResult = `${user} beats ${computerChoice}!`);
@@ -107,7 +116,10 @@ playerButtons.forEach((button) => {
 });
 
 playerButtons.forEach((button) => {
-  button.addEventListener("click", addInfoBoardBtn);
+  button.addEventListener("click", () => {
+    addInfoBoardDiv();
+    replaceInfoBoarDiv();
+  });
 });
 
 playerButtons.forEach((button) => {
@@ -119,8 +131,11 @@ playerButtons.forEach((button) => {
 });
 
 startPlayBtn.addEventListener("click", startMainGame);
+
 quitButton.addEventListener("click", () => {
   startMainGame();
   resetGame();
+  deleteInfoBoardDiv();
 });
 resetBtn.addEventListener("click", resetGame);
+resetBtn.addEventListener("click", deleteInfoBoardDiv);
