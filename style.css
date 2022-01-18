@@ -23,6 +23,13 @@ body {
 .play-button.hidden {
   display: none;
 }
+/*toggle visible the info btn */
+.info_board {
+  display: none;
+}
+.info_board.visible {
+  display: flex;
+}
 
 /* toggle to visible the score section */
 .score {

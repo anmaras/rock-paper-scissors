@@ -8,6 +8,9 @@ const roundNumberDisplay = document.querySelector(".game_round span");
 const playerWinDisplay = document.querySelector(".player_win");
 const computerWinDisplay = document.querySelector(".computer_win");
 const resetBtn = document.querySelector(".reset_btn");
+const mainBoardButton = document.querySelector("#main-board button");
+const infoBoardButton = document.querySelector(".info_board button");
+
 let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
