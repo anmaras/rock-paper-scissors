@@ -15,7 +15,7 @@ let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
 
-// game start function
+// game start function turn visibility on
 const startMainGame = () => {
   toggleStart.classList.toggle("hidden");
   gameStart.classList.toggle("visible");
@@ -27,14 +27,15 @@ const startMainGame = () => {
 
 // Info board add new button and result
 const addInfoBoardBtn = () => {
-  const infoBtn = document.createElement("button");
-  infoBtn.id = "info_btn";
-  infoBtn.textContent = roundResult;
-  infoBtn.style.fontSize = "50px";
-  infoBoardButton.appendChild(infoBtn);
+  const infoDiv = document.createElement("div");
+  infoDiv.id = "info_div";
+  infoDiv.textContent = roundResult; //get result from calcGameRound function
+  infoDiv.style.fontSize = "50px";
+  infoDiv.style.color = "#eefceb";
+  infoBoardButton.appendChild(infoDiv);
   // replace the info btn so it wont stack
-  const infoBtnSelection = document.getElementById("info_btn");
-  infoBoardButton.replaceChild(infoBtn, infoBtnSelection);
+  const infoNewDiv = document.getElementById("info_div");
+  infoBoardButton.replaceChild(infoDiv, infoNewDiv);
 };
 
 //computer choice result
