@@ -9,7 +9,7 @@ const playerWinDisplay = document.querySelector(".player_win");
 const computerWinDisplay = document.querySelector(".computer_win");
 const resetBtn = document.querySelector(".reset_btn");
 const mainBoardButton = document.querySelector("#main-board button");
-const infoBoardButton = document.querySelector(".info_board button");
+const infoBoardButton = document.querySelector(".info_board");
 
 let userScore = 0;
 let computerScore = 0;
@@ -22,6 +22,18 @@ const startMainGame = () => {
   gameMainBox.classList.toggle("visible");
   quitButton.classList.toggle("visible");
   resetBtn.classList.toggle("visible");
+  infoBoardButton.classList.toggle("visible");
+};
+
+// Info board add new button and result
+const addInfoBoardBtn = () => {
+  const infoBtn = document.createElement("button");
+  infoBtn.id = "info_btn";
+  infoBtn.textContent = roundResult;
+  infoBoardButton.appendChild(infoBtn);
+  // replace the info btn so it wont stack
+  const infoBtnSelection = document.getElementById("info_btn");
+  infoBoardButton.replaceChild(infoBtn, infoBtnSelection);
 };
 
 //computer choice result
@@ -34,20 +46,20 @@ const calcComputerChoice = () => {
   } else return (number = "Paper");
 };
 
-//Game round result
+//Game round result function
 const calcGameRound = (user, computerChoice) => {
   if (user === "Rock" && computerChoice === "Scissors") {
     userScore += 1;
-    return (roundResult = `Win`);
+    return (roundResult = `${user} beats ${computerChoice}!`);
   } else if (user === "Scissors" && computerChoice === "Paper") {
     userScore += 1;
-    return (roundResult = `Win`);
+    return (roundResult = `${user} beats ${computerChoice}!`);
   } else if (user === "Paper" && computerChoice === "Rock") {
     userScore += 1;
-    return (roundResult = `Win`);
+    return (roundResult = `${user} beats ${computerChoice}!`);
   } else if (user === computerChoice) {
-    return (roundResult = `Draw`);
-  } else roundResult = `Lose`;
+    return (roundResult = `Draw!`);
+  } else roundResult = `${computerChoice} beats ${user}!`;
   computerScore++;
 };
 
@@ -90,6 +102,10 @@ playerButtons.forEach((button) => {
 
 playerButtons.forEach((button) => {
   button.addEventListener("click", calcUserScore);
+});
+
+playerButtons.forEach((button) => {
+  button.addEventListener("click", addInfoBoardBtn);
 });
 
 playerButtons.forEach((button) => {
