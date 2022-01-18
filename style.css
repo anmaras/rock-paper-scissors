@@ -23,12 +23,21 @@ body {
 .play-button.hidden {
   display: none;
 }
-/*toggle visible the info btn */
+
+/*toggle visible the info btn and style */
 .info_board {
   display: none;
 }
+
 .info_board.visible {
   display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+}
+.info_text {
+  color: #eefceb;
+  font-size: 40px;
 }
 
 /* toggle to visible the score section */
@@ -104,6 +113,7 @@ button {
   font-weight: bold;
   color: #eefceb;
   border-radius: 25px;
+  padding: 10px;
   background-color: #84c234;
   border: 3px solid #474a4f;
   box-shadow: 10px 10px 2px #1a1816;

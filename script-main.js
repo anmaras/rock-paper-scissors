@@ -10,7 +10,8 @@ const computerWinDisplay = document.querySelector(".computer_win");
 const resetBtn = document.querySelector(".reset_btn");
 const mainBoardButton = document.querySelector("#main-board button");
 const infoBoardButton = document.querySelector(".info_board");
-let infoDiv = "";
+const infoDiv = document.querySelector("#info-board div");
+
 let infoNewDiv = "";
 let userScore = 0;
 let computerScore = 0;
@@ -28,25 +29,11 @@ const startMainGame = () => {
 
 // Info board add new div element
 const addInfoBoardDiv = () => {
-  infoDiv = document.createElement("div");
-  infoDiv.id = "info_div";
-  infoDiv.textContent = roundResult; //get result from calcGameRound function
-  infoDiv.style.fontSize = "50px";
-  infoDiv.style.color = "#eefceb";
-  infoBoardButton.appendChild(infoDiv);
+  infoDiv.textContent = roundResult;
 };
 
-const replaceInfoBoarDiv = () => {
-  // replace the info div so it wont stack
-  infoNewDiv = document.getElementById("info_div");
-  infoBoardButton.replaceChild(infoDiv, infoNewDiv);
-};
-
-// Delete the info div
-const deleteInfoBoardDiv = () => {
-  if (infoDiv !== "") {
-    infoBoardButton.removeChild(infoBoardButton.firstChild);
-  }
+const resetInfoBoardDiv = () => {
+  infoDiv.textContent = "";
 };
 
 //computer choice result
@@ -76,19 +63,29 @@ const calcGameRound = (user, computerChoice) => {
   computerScore++;
 };
 
-const getRoundNumber = () => roundNumberDisplay.textContent++;
+const getRoundNumber = () => {
+  roundNumberDisplay.textContent++;
+  if (userScore >= 5 || computerScore >= 5) {
+    playerButtons.forEach((button) => {
+      button.removeEventListener("click", getRoundNumber);
+    });
+  }
+};
 
-const calcUserScore = () => (playerWinDisplay.textContent = userScore);
-
-const calcComputerScore = () =>
-  (computerWinDisplay.textContent = computerScore);
-
-//who won the game function
-const checkGameConditions = () => {
-  if (userScore >= 5) {
-    return alert("You win");
-  } else if (computerScore >= 5) {
-    return alert("You Lost");
+const calcUserScore = () => {
+  playerWinDisplay.textContent = userScore;
+  if (userScore >= 5 || computerScore >= 5) {
+    playerButtons.forEach((button) => {
+      button.removeEventListener("click", calcUserScore);
+    });
+  }
+};
+const calcComputerScore = () => {
+  computerWinDisplay.textContent = computerScore;
+  if (userScore >= 5 || computerScore >= 5) {
+    playerButtons.forEach((button) => {
+      button.removeEventListener("click", calcComputerScore);
+    });
   }
 };
 
@@ -101,16 +98,28 @@ const resetGame = () => {
   computerWinDisplay.textContent = computerScore;
 };
 
+//who won the game function
+const checkGameConditions = () => {
+  if (userScore >= 5) {
+    return (infoDiv.textContent = "YOU WON THE GAME");
+  } else if (computerScore >= 5) {
+    return (infoDiv.textContent = "YOU LOST THE GAME");
+  }
+};
+
 //eventListeners
+
 playerButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const user = button.id;
     computerChoice = calcComputerChoice();
     calcGameRound(user, computerChoice);
-    // console.log(`Player ${user}`);
-    // console.log(`Computer ${computerChoice}`);
-    // console.log(roundResult);
+    addInfoBoardDiv();
+    checkGameConditions();
   });
+});
+playerButtons.forEach((button) => {
+  button.addEventListener("click", getRoundNumber);
 });
 
 playerButtons.forEach((button) => {
@@ -118,12 +127,7 @@ playerButtons.forEach((button) => {
 });
 
 playerButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    addInfoBoardDiv();
-    replaceInfoBoarDiv();
-    calcComputerScore();
-    getRoundNumber();
-  });
+  button.addEventListener("click", calcComputerScore);
 });
 
 startPlayBtn.addEventListener("click", startMainGame);
@@ -131,12 +135,19 @@ startPlayBtn.addEventListener("click", startMainGame);
 quitButton.addEventListener("click", () => {
   startMainGame();
   resetGame();
-  deleteInfoBoardDiv();
+  resetInfoBoardDiv();
 });
 
 resetBtn.addEventListener("click", () => {
   resetGame();
-  deleteInfoBoardDiv();
+  resetInfoBoardDiv();
+  playerButtons.forEach((button) => {
+    button.addEventListener("click", getRoundNumber);
+  });
+  playerButtons.forEach((button) => {
+    button.addEventListener("click", calcUserScore);
+  });
+  playerButtons.forEach((button) => {
+    button.addEventListener("click", calcComputerScore);
+  });
 });
-
-// resetBtn.addEventListener("click", deleteInfoBoardDiv);
