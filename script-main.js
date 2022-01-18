@@ -30,6 +30,7 @@ const addInfoBoardBtn = () => {
   const infoBtn = document.createElement("button");
   infoBtn.id = "info_btn";
   infoBtn.textContent = roundResult;
+  infoBtn.style.fontSize = "50px";
   infoBoardButton.appendChild(infoBtn);
   // replace the info btn so it wont stack
   const infoBtnSelection = document.getElementById("info_btn");
