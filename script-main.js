@@ -21,16 +21,23 @@ let roundResult = "";
 
 //function that change the button bg color when clicked
 const getButtonColor = () => {
+  const playerArray = ["Rock", "Scissors", "Paper"];
   let btn = event.target.id;
-  if (btn == "Rock") {
-    playerClassGroup.children[0].style.backgroundColor = "blue";
-  } else playerClassGroup.children[0].style.backgroundColor = "#84c234";
-  if (btn == "Scissors") {
-    playerClassGroup.children[1].style.backgroundColor = "blue";
-  } else playerClassGroup.children[1].style.backgroundColor = "#84c234";
-  if (btn == "Paper") {
-    playerClassGroup.children[2].style.backgroundColor = "blue";
-  } else playerClassGroup.children[2].style.backgroundColor = "#84c234";
+  for (let i = 0; i < playerArray.length; i++) {
+    if (playerArray[i] === btn) {
+      playerClassGroup.children[i].style.backgroundColor = "blue";
+    } else playerClassGroup.children[i].style.backgroundColor = "#84c234";
+  }
+
+  // if (btn == "Rock") {
+  //   playerClassGroup.children[0].style.backgroundColor = "blue";
+  // } else playerClassGroup.children[0].style.backgroundColor = "#84c234";
+  // if (btn == "Scissors") {
+  //   playerClassGroup.children[1].style.backgroundColor = "blue";
+  // } else playerClassGroup.children[1].style.backgroundColor = "#84c234";
+  // if (btn == "Paper") {
+  //   playerClassGroup.children[2].style.backgroundColor = "blue";
+  // } else playerClassGroup.children[2].style.backgroundColor = "#84c234";
 };
 
 // game start function turn visibility on
