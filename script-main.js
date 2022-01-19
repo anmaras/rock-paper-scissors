@@ -23,7 +23,7 @@ const getPlayerButtonColor = () => {
   let btn = event.target.id;
   for (let i = 0; i < playerButtonTextInArray.length; i++) {
     if (playerButtonTextInArray[i] === btn) {
-      playerMainButtons.children[i].style.backgroundColor = "blue";
+      playerMainButtons.children[i].style.backgroundColor = "#3472c2";
     } else playerMainButtons.children[i].style.backgroundColor = "#84c234";
   }
 };
@@ -45,7 +45,7 @@ const restartGame = () => {
 const addInfoBoardDiv = () => {
   infoText.textContent = roundResult;
 };
-
+// Reset info board
 const resetInfoBoardDiv = () => {
   infoText.textContent = "";
 };
@@ -66,7 +66,7 @@ const calcComputerChoice = () => {
 const getComputerChoiceColor = () => {
   for (let i = 0; i < playerButtonTextInArray.length; i++) {
     if (playerButtonTextInArray[i] === computerChoice) {
-      computerButtons.children[i].style.backgroundColor = "blue";
+      computerButtons.children[i].style.backgroundColor = "#c23440";
     } else computerButtons.children[i].style.backgroundColor = "#84c234";
   }
 };
