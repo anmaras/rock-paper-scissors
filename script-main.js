@@ -12,7 +12,7 @@ const mainBoardButton = document.querySelector("#main-board button");
 const infoBoardButton = document.querySelector(".info_board");
 const infoDiv = document.querySelector("#info-board div");
 const computerClassGroup = document.querySelector(".computer_btns");
-computerClassGroup.children[0];
+const playerClassGroup = document.querySelector(".player_btns");
 
 let infoNewDiv = "";
 let userScore = 0;
@@ -21,7 +21,16 @@ let roundResult = "";
 
 //function that change the button bg color when clicked
 const getButtonColor = () => {
-  event.target.style.backgroundColor = "red";
+  let btn = event.target.id;
+  if (btn == "Rock") {
+    playerClassGroup.children[0].style.backgroundColor = "blue";
+  } else playerClassGroup.children[0].style.backgroundColor = "#84c234";
+  if (btn == "Scissors") {
+    playerClassGroup.children[1].style.backgroundColor = "blue";
+  } else playerClassGroup.children[1].style.backgroundColor = "#84c234";
+  if (btn == "Paper") {
+    playerClassGroup.children[2].style.backgroundColor = "blue";
+  } else playerClassGroup.children[2].style.backgroundColor = "#84c234";
 };
 
 // game start function turn visibility on
@@ -129,6 +138,7 @@ playerButtons.forEach((button) => {
     calcGameRound(user, computerChoice);
     addInfoBoardDiv();
     checkGameConditions();
+    getButtonColor();
   });
 });
 playerButtons.forEach((button) => {
@@ -143,9 +153,9 @@ playerButtons.forEach((button) => {
   button.addEventListener("click", calcComputerScore);
 });
 
-playerButtons.forEach((button) => {
-  button.addEventListener("click", getButtonColor);
-});
+// playerButtons.forEach((button) => {
+//   button.addEventListener("click", getButtonColor);
+// });
 
 startPlayBtn.addEventListener("click", startMainGame);
 
