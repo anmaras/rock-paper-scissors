@@ -11,6 +11,8 @@ const resetBtn = document.querySelector(".reset_btn");
 const mainBoardButton = document.querySelector("#main-board button");
 const infoBoardButton = document.querySelector(".info_board");
 const infoDiv = document.querySelector("#info-board div");
+const computerClassGroup = document.querySelector(".computer_btns");
+computerClassGroup.children[0];
 
 let infoNewDiv = "";
 let userScore = 0;
@@ -45,10 +47,15 @@ const resetInfoBoardDiv = () => {
 const calcComputerChoice = () => {
   let number = Math.floor(Math.random() * 3 + 1);
   if (number === 1) {
+    computerClassGroup.children[0].style.backgroundColor = "red";
     return (number = "Rock");
   } else if (number === 2) {
+    computerClassGroup.children[1].style.backgroundColor = "red";
     return (number = "Scissors");
-  } else return (number = "Paper");
+  } else {
+    computerClassGroup.children[2].style.backgroundColor = "red";
+    return (number = "Paper");
+  }
 };
 
 //Game round result function
@@ -139,10 +146,6 @@ playerButtons.forEach((button) => {
 playerButtons.forEach((button) => {
   button.addEventListener("click", getButtonColor);
 });
-
-// playerButtons.forEach((button) => {
-//   button.removeEventListener("click", getButtonColor);
-// });
 
 startPlayBtn.addEventListener("click", startMainGame);
 
