@@ -13,31 +13,21 @@ const infoBoardButton = document.querySelector(".info_board");
 const infoDiv = document.querySelector("#info-board div");
 const computerClassGroup = document.querySelector(".computer_btns");
 const playerClassGroup = document.querySelector(".player_btns");
-
+let number = Math.floor(Math.random() * 3 + 1);
 let infoNewDiv = "";
 let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
+const playerArrayButtons = ["Rock", "Scissors", "Paper"];
 
-//function that change the button bg color when clicked
-const getButtonColor = () => {
-  const playerArray = ["Rock", "Scissors", "Paper"];
+//function that change the player button bg color when clicked
+const getPlayerButtonColor = () => {
   let btn = event.target.id;
-  for (let i = 0; i < playerArray.length; i++) {
-    if (playerArray[i] === btn) {
+  for (let i = 0; i < playerArrayButtons.length; i++) {
+    if (playerArrayButtons[i] === btn) {
       playerClassGroup.children[i].style.backgroundColor = "blue";
     } else playerClassGroup.children[i].style.backgroundColor = "#84c234";
   }
-
-  // if (btn == "Rock") {
-  //   playerClassGroup.children[0].style.backgroundColor = "blue";
-  // } else playerClassGroup.children[0].style.backgroundColor = "#84c234";
-  // if (btn == "Scissors") {
-  //   playerClassGroup.children[1].style.backgroundColor = "blue";
-  // } else playerClassGroup.children[1].style.backgroundColor = "#84c234";
-  // if (btn == "Paper") {
-  //   playerClassGroup.children[2].style.backgroundColor = "blue";
-  // } else playerClassGroup.children[2].style.backgroundColor = "#84c234";
 };
 
 // game start function turn visibility on
@@ -63,14 +53,20 @@ const resetInfoBoardDiv = () => {
 const calcComputerChoice = () => {
   let number = Math.floor(Math.random() * 3 + 1);
   if (number === 1) {
-    computerClassGroup.children[0].style.backgroundColor = "red";
     return (number = "Rock");
   } else if (number === 2) {
-    computerClassGroup.children[1].style.backgroundColor = "red";
     return (number = "Scissors");
-  } else {
-    computerClassGroup.children[2].style.backgroundColor = "red";
+  } else if (number === 3) {
     return (number = "Paper");
+  }
+};
+
+//computer choice color
+const getComputerChoiceColor = () => {
+  for (let i = 0; i < playerArrayButtons.length; i++) {
+    if (playerArrayButtons[i] === computerChoice) {
+      computerClassGroup.children[i].style.backgroundColor = "blue";
+    } else computerClassGroup.children[i].style.backgroundColor = "#84c234";
   }
 };
 
@@ -126,6 +122,15 @@ const resetGame = () => {
   playerWinDisplay.textContent = userScore;
   computerWinDisplay.textContent = computerScore;
 };
+//button colors reset function
+
+const returnColorReset = () => {
+  for (let i = 0; i <= 2; i++) {
+    console.log(i);
+    playerClassGroup.children[i].style.backgroundColor = "#84c234";
+    computerClassGroup.children[i].style.backgroundColor = "#84c234";
+  }
+};
 
 //who won the game function
 const checkGameConditions = () => {
@@ -145,7 +150,8 @@ playerButtons.forEach((button) => {
     calcGameRound(user, computerChoice);
     addInfoBoardDiv();
     checkGameConditions();
-    getButtonColor();
+    getPlayerButtonColor();
+    getComputerChoiceColor();
   });
 });
 playerButtons.forEach((button) => {
@@ -160,21 +166,19 @@ playerButtons.forEach((button) => {
   button.addEventListener("click", calcComputerScore);
 });
 
-// playerButtons.forEach((button) => {
-//   button.addEventListener("click", getButtonColor);
-// });
-
 startPlayBtn.addEventListener("click", startMainGame);
 
 quitButton.addEventListener("click", () => {
   startMainGame();
   resetGame();
   resetInfoBoardDiv();
+  returnColorReset();
 });
 
 resetBtn.addEventListener("click", () => {
   resetGame();
   resetInfoBoardDiv();
+  returnColorReset();
   playerButtons.forEach((button) => {
     button.addEventListener("click", getRoundNumber);
   });
