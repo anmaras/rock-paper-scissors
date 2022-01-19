@@ -69,12 +69,7 @@ body {
 }
 
 /* toggle visible the quit & reset button */
-.quit_btn {
-  display: none;
-}
-.quit_btn.visible {
-  display: flex;
-}
+
 .reset_btn {
   display: none;
 }
@@ -126,10 +121,6 @@ button {
   transform: scale(0.9, 0.9);
 }
 .play-button button:active {
-  background-color: #3472c2;
-  transform: scale(0.9, 0.9);
-}
-.quit_btn button:active {
   background-color: #3472c2;
   transform: scale(0.9, 0.9);
 }

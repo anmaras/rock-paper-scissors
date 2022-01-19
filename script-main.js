@@ -1,72 +1,73 @@
 const toggleStart = document.querySelector(".play-button");
-const startPlayBtn = document.querySelector(".play-button button");
-const gameStart = document.querySelector(".score");
-const gameMainBox = document.querySelector(".ingame-box");
-const quitButton = document.querySelector(".quit_btn");
+const playButton = toggleStart.firstElementChild;
+const gameAndRoundOutcome = document.getElementById("score");
+const playerAndComputerButtons = document.getElementById("ingame");
 const playerButtons = document.querySelectorAll(".player_btns button");
-const roundNumberDisplay = document.querySelector(".game_round span");
-const playerWinDisplay = document.querySelector(".player_win");
-const computerWinDisplay = document.querySelector(".computer_win");
-const resetBtn = document.querySelector(".reset_btn");
+const roundNumber = document.querySelector(".game_round span");
+const playerWinNumber = document.querySelector(".player_win");
+const computerWinNumber = document.querySelector(".computer_win");
+const playAgainButton = document.querySelector(".reset_btn");
 const mainBoardButton = document.querySelector("#main-board button");
 const infoBoardButton = document.querySelector(".info_board");
-const infoDiv = document.querySelector("#info-board div");
-const computerClassGroup = document.querySelector(".computer_btns");
-const playerClassGroup = document.querySelector(".player_btns");
-let number = Math.floor(Math.random() * 3 + 1);
-let infoNewDiv = "";
+const infoText = document.querySelector("#info-board div");
+const computerButtons = document.querySelector(".computer_btns");
+const playerMainButtons = document.querySelector(".player_btns");
+const playerButtonTextInArray = ["Rock", "Scissors", "Paper"];
+let randomNumber = Math.floor(Math.random() * 3 + 1);
 let userScore = 0;
 let computerScore = 0;
 let roundResult = "";
-const playerArrayButtons = ["Rock", "Scissors", "Paper"];
 
 //function that change the player button bg color when clicked
 const getPlayerButtonColor = () => {
   let btn = event.target.id;
-  for (let i = 0; i < playerArrayButtons.length; i++) {
-    if (playerArrayButtons[i] === btn) {
-      playerClassGroup.children[i].style.backgroundColor = "blue";
-    } else playerClassGroup.children[i].style.backgroundColor = "#84c234";
+  for (let i = 0; i < playerButtonTextInArray.length; i++) {
+    if (playerButtonTextInArray[i] === btn) {
+      playerMainButtons.children[i].style.backgroundColor = "blue";
+    } else playerMainButtons.children[i].style.backgroundColor = "#84c234";
   }
 };
 
 // game start function turn visibility on
 const startMainGame = () => {
   toggleStart.classList.toggle("hidden");
-  gameStart.classList.toggle("visible");
-  gameMainBox.classList.toggle("visible");
-  quitButton.classList.toggle("visible");
-  resetBtn.classList.toggle("visible");
+  gameAndRoundOutcome.classList.toggle("visible");
+  playerAndComputerButtons.classList.toggle("visible");
   infoBoardButton.classList.toggle("visible");
+};
+// game after restart function
+const restartGame = () => {
+  playerAndComputerButtons.classList.toggle("visible");
+  playAgainButton.classList.toggle("visible");
 };
 
 // Info board add new div element
 const addInfoBoardDiv = () => {
-  infoDiv.textContent = roundResult;
+  infoText.textContent = roundResult;
 };
 
 const resetInfoBoardDiv = () => {
-  infoDiv.textContent = "";
+  infoText.textContent = "";
 };
 
 //computer choice result
 const calcComputerChoice = () => {
-  let number = Math.floor(Math.random() * 3 + 1);
-  if (number === 1) {
-    return (number = "Rock");
-  } else if (number === 2) {
-    return (number = "Scissors");
-  } else if (number === 3) {
-    return (number = "Paper");
+  let randomNumber = Math.floor(Math.random() * 3 + 1);
+  if (randomNumber === 1) {
+    return (randomNumber = "Rock");
+  } else if (randomNumber === 2) {
+    return (randomNumber = "Scissors");
+  } else if (randomNumber === 3) {
+    return (randomNumber = "Paper");
   }
 };
 
 //computer choice color
 const getComputerChoiceColor = () => {
-  for (let i = 0; i < playerArrayButtons.length; i++) {
-    if (playerArrayButtons[i] === computerChoice) {
-      computerClassGroup.children[i].style.backgroundColor = "blue";
-    } else computerClassGroup.children[i].style.backgroundColor = "#84c234";
+  for (let i = 0; i < playerButtonTextInArray.length; i++) {
+    if (playerButtonTextInArray[i] === computerChoice) {
+      computerButtons.children[i].style.backgroundColor = "blue";
+    } else computerButtons.children[i].style.backgroundColor = "#84c234";
   }
 };
 
@@ -89,7 +90,7 @@ const calcGameRound = (user, computerChoice) => {
 
 // Functions that calculate round and score
 const getRoundNumber = () => {
-  roundNumberDisplay.textContent++;
+  roundNumber.textContent++;
   if (userScore >= 5 || computerScore >= 5) {
     playerButtons.forEach((button) => {
       button.removeEventListener("click", getRoundNumber);
@@ -98,7 +99,8 @@ const getRoundNumber = () => {
 };
 
 const calcUserScore = () => {
-  playerWinDisplay.textContent = userScore;
+  playerWinNumber.textContent = userScore;
+  console.log(playerWinNumber);
   if (userScore >= 5 || computerScore >= 5) {
     playerButtons.forEach((button) => {
       button.removeEventListener("click", calcUserScore);
@@ -106,7 +108,7 @@ const calcUserScore = () => {
   }
 };
 const calcComputerScore = () => {
-  computerWinDisplay.textContent = computerScore;
+  computerWinNumber.textContent = computerScore;
   if (userScore >= 5 || computerScore >= 5) {
     playerButtons.forEach((button) => {
       button.removeEventListener("click", calcComputerScore);
@@ -118,27 +120,37 @@ const calcComputerScore = () => {
 const resetGame = () => {
   userScore = 0;
   computerScore = 0;
-  roundNumberDisplay.textContent = 1;
-  playerWinDisplay.textContent = userScore;
-  computerWinDisplay.textContent = computerScore;
+  roundNumber.textContent = 1;
+  playerWinNumber.textContent = userScore;
+  console.log(playerWinNumber);
+  computerWinNumber.textContent = computerScore;
 };
 //button colors reset function
 
-const returnColorReset = () => {
+const getColorReset = () => {
   for (let i = 0; i <= 2; i++) {
-    console.log(i);
-    playerClassGroup.children[i].style.backgroundColor = "#84c234";
-    computerClassGroup.children[i].style.backgroundColor = "#84c234";
+    playerMainButtons.children[i].style.backgroundColor = "#84c234";
+    computerButtons.children[i].style.backgroundColor = "#84c234";
   }
 };
 
 //who won the game function
 const checkGameConditions = () => {
-  if (userScore >= 5) {
-    return (infoDiv.textContent = "YOU WON THE GAME");
-  } else if (computerScore >= 5) {
-    return (infoDiv.textContent = "YOU LOST THE GAME");
+  for (let i = 0; i <= 2; i++) {
+    if (userScore >= 5) {
+      getAfterGameTitle();
+      return (infoText.textContent = "YOU WON THE GAME!");
+    } else if (computerScore >= 5) {
+      getAfterGameTitle();
+      return (infoText.textContent = "YOU LOST THE GAME!");
+    }
   }
+};
+
+//after game end
+const getAfterGameTitle = () => {
+  playerAndComputerButtons.classList.toggle("visible");
+  playAgainButton.classList.toggle("visible");
 };
 
 //eventListeners
@@ -166,19 +178,13 @@ playerButtons.forEach((button) => {
   button.addEventListener("click", calcComputerScore);
 });
 
-startPlayBtn.addEventListener("click", startMainGame);
+playButton.addEventListener("click", startMainGame);
 
-quitButton.addEventListener("click", () => {
-  startMainGame();
+playAgainButton.addEventListener("click", () => {
   resetGame();
   resetInfoBoardDiv();
-  returnColorReset();
-});
-
-resetBtn.addEventListener("click", () => {
-  resetGame();
-  resetInfoBoardDiv();
-  returnColorReset();
+  getColorReset();
+  restartGame();
   playerButtons.forEach((button) => {
     button.addEventListener("click", getRoundNumber);
   });
